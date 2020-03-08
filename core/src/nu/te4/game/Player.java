@@ -9,38 +9,51 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+
+
 
 /**
  *
  * @author Johan
  */
-public class Player extends Sprite {
-    private float speed;
-    private int health;
+public class Player implements Entity{
+    private Vector2 playerPos;
     private Texture player;
     
-
-    
-    public Player(Texture texture,int xpos, int ypos, int sp, int hp){
-        super(texture);
-        super.setPosition(xpos,ypos);
-        health = hp;
-        speed = sp; 
+    public Player(){
+        player = new Texture(Gdx.files.internal("Link.png"));
+        playerPos = new Vector2(640 / 2 - 32, 0);
     }
     
-    /*void move() { 
+    
+    @Override
+    public void render(SpriteBatch batch){
+        batch.draw(player, playerPos.x, playerPos.y ,32, 32);
+    }
+    @Override
+    public void update(float delta){
+        move(delta);
+    }
+    
+    private void move(float delta) { 
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            player.setY(player.getY() + 5);
+            playerPos.y += 2.5f;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            player.setX(player.getX() + 5);
+            playerPos.x += 2.5f;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            player.setY(player.getY() - 5);
+            playerPos.y -= 2.5f;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            player.setX(player.getX() - 5);
+            playerPos.x -= 2.5f;
         }
-    }*/
+        
+        
+    }
+    public Vector2 getPos(){
+         return playerPos;   
+        }
 }
