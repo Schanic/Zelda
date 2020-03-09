@@ -43,7 +43,7 @@ public class Fireball {
         double angle = Math.atan2(target.y - pos.y, target.x - pos.x);
         pos.x += 4 * Math.cos(angle);
         pos.y += 4 * Math.sin(angle);
-        if(time >= 0.5f){
+        if(time >= 1.5f){
             out = false;
             time = 0;
         }

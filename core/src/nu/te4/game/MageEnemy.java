@@ -56,7 +56,7 @@ public class MageEnemy implements Entity {
             case CHARGE:
                 charge();
                 break;
-            default:
+           // default:
         }
     }
 
